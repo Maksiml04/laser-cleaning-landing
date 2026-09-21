@@ -1,0 +1,13 @@
+{
+  "name": "laser-cleaning-landing",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.9",
+    "html-minifier-terser": "^7.2.0",
+    "lightningcss": "^1.29.2"
+  }
+}

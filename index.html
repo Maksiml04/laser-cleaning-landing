@@ -5,10 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Мобильная лазерная очистка металла от ржавчины, краски, окалины и нагара. Точно, чисто, без песка и химии."
+      content="Лазерная очистка металла в Москве и области: ржавчина, краска и окалина. Выезд на объект, тестовый участок и расчет по фото."
     />
+    <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#0a0d12" />
-    <title>LZR / Лазерная очистка металла</title>
+    <title>Лазерная очистка металла в Москве | LZR</title>
+    <link rel="canonical" href="https://maksiml04.github.io/laser-cleaning-landing/" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="LZR" />
+    <meta property="og:title" content="Лазерная очистка металла в Москве | LZR" />
+    <meta
+      property="og:description"
+      content="Ржавчина, краска и окалина без песка и химии. Выезд на объект, тестовый участок и расчет по фото."
+    />
+    <meta property="og:url" content="https://maksiml04.github.io/laser-cleaning-landing/" />
+    <meta
+      property="og:image"
+      content="https://maksiml04.github.io/laser-cleaning-landing/assets/hero-industrial.jpg"
+    />
+    <meta property="og:image:alt" content="Лазерная очистка металлической поверхности" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="853" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Лазерная очистка металла в Москве | LZR" />
+    <meta
+      name="twitter:description"
+      content="Выездная очистка металла от ржавчины, краски и окалины. Расчет по фото."
+    />
+    <meta
+      name="twitter:image"
+      content="https://maksiml04.github.io/laser-cleaning-landing/assets/hero-industrial.jpg"
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "https://maksiml04.github.io/laser-cleaning-landing/#business",
+        "name": "LZR - лазерная очистка металла",
+        "url": "https://maksiml04.github.io/laser-cleaning-landing/",
+        "image": "https://maksiml04.github.io/laser-cleaning-landing/assets/hero-industrial.jpg",
+        "description": "Лазерная очистка металла от ржавчины, краски и окалины с выездом по Москве и Московской области.",
+        "areaServed": [
+          { "@type": "City", "name": "Москва" },
+          { "@type": "AdministrativeArea", "name": "Московская область" }
+        ],
+        "serviceType": [
+          "Лазерная очистка металла",
+          "Удаление ржавчины",
+          "Удаление краски",
+          "Снятие окалины"
+        ]
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -33,11 +83,12 @@
           <span class="brand-caption">laser cleaning</span>
         </a>
 
-        <nav class="site-nav" data-nav aria-label="Основная навигация">
-          <a href="#why">Почему лазер</a>
-          <a href="#services">Задачи</a>
-          <a href="#process">Как работаем</a>
-          <a href="#contact">Контакты</a>
+        <nav class="site-nav" id="site-navigation" data-nav aria-label="Основная навигация">
+          <a href="uslugi/">Услуги</a>
+          <a href="restoration/">Реставрация</a>
+          <a href="industrial/">Промышленная очистка</a>
+          <a href="prices/">Цены</a>
+          <a href="contacts/">Контакты</a>
         </nav>
 
         <a class="header-cta magnetic" href="#contact" data-magnetic>
@@ -50,6 +101,7 @@
           type="button"
           aria-label="Открыть меню"
           aria-expanded="false"
+          aria-controls="site-navigation"
           data-menu-toggle
         >
           <span></span><span></span>
@@ -114,8 +166,12 @@
               <div class="stage-grid" aria-hidden="true"></div>
               <figure class="hero-media">
                 <img
-                  src="img.png"
+                  src="assets/hero-industrial.jpg"
                   alt="Лазерный луч очищает металлическую поверхность"
+                  width="1280"
+                  height="853"
+                  fetchpriority="high"
+                  decoding="async"
                 />
                 <span class="media-vignette" aria-hidden="true"></span>
                 <span class="laser-scan" aria-hidden="true"></span>
@@ -190,10 +246,24 @@
               </div>
               <div class="comparison-visual" data-comparison style="--split: 58%">
                 <div class="comparison-image comparison-image--abrasive">
-                  <img src="img.png" alt="Очистка металла абразивным методом" />
+                  <img
+                    src="assets/rust-before-after.jpg"
+                    alt="Металлическая поверхность с ржавчиной до очистки"
+                    width="1280"
+                    height="853"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
                 <div class="comparison-image comparison-image--laser">
-                  <img src="img.png" alt="Очистка металла лазерным методом" />
+                  <img
+                    src="assets/hero-industrial.jpg"
+                    alt="Лазер очищает металлическую поверхность от ржавчины"
+                    width="1280"
+                    height="853"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
                 <span class="comparison-tag comparison-tag--left">абразив</span>
                 <span class="comparison-tag comparison-tag--right">лазер</span>
@@ -323,7 +393,14 @@
 
           <div class="services-grid">
             <article class="service-card service-card--featured reveal reveal--up">
-              <img src="img.png" alt="Очистка промышленной металлической детали" />
+              <img
+                src="assets/industrial-process.jpg"
+                alt="Лазерная очистка металлической детали в производственном цеху"
+                width="1280"
+                height="1067"
+                loading="lazy"
+                decoding="async"
+              />
               <div class="service-overlay"></div>
               <div class="service-content">
                 <span class="service-number">01 / INDUSTRY</span>
@@ -333,7 +410,14 @@
               </div>
             </article>
             <article class="service-card reveal reveal--up" data-delay="100">
-              <img src="img.png" alt="Лазерная очистка транспортного узла" />
+              <img
+                src="assets/hero-industrial.jpg"
+                alt="Очистка ржавой металлической поверхности лазером"
+                width="1280"
+                height="853"
+                loading="lazy"
+                decoding="async"
+              />
               <div class="service-overlay"></div>
               <div class="service-content">
                 <span class="service-number">02 / TRANSPORT</span>
@@ -343,7 +427,14 @@
               </div>
             </article>
             <article class="service-card reveal reveal--up" data-delay="150">
-              <img src="img.png" alt="Металлоконструкция после очистки" />
+              <img
+                src="assets/industrial-wide.png"
+                alt="Оператор очищает крупную металлоконструкцию лазером"
+                width="1374"
+                height="1145"
+                loading="lazy"
+                decoding="async"
+              />
               <div class="service-overlay"></div>
               <div class="service-content">
                 <span class="service-number">03 / STRUCTURE</span>
@@ -353,7 +444,14 @@
               </div>
             </article>
             <article class="service-card service-card--small reveal reveal--up" data-delay="200">
-              <img src="img.png" alt="Точечная очистка металлической детали" />
+              <img
+                src="assets/hero-restoration.jpg"
+                alt="Импульсная лазерная очистка декоративной металлической детали"
+                width="1280"
+                height="853"
+                loading="lazy"
+                decoding="async"
+              />
               <div class="service-overlay"></div>
               <div class="service-content">
                 <span class="service-number">04 / DETAIL</span>
@@ -490,25 +588,71 @@
             </div>
           </div>
 
-          <form class="lead-form" data-lead-form>
+          <form
+            class="lead-form"
+            data-lead-form
+            action="https://formspree.io/f/YOUR_FORM_ID"
+            method="POST"
+            aria-describedby="form-note"
+          >
+            <input type="hidden" name="_subject" value="Новая заявка с сайта LZR" />
+            <input type="hidden" name="_format" value="plain" />
             <div class="form-field">
               <label for="name">Как к вам обращаться?</label>
-              <input id="name" name="name" type="text" placeholder="Имя или компания" autocomplete="name" required />
+              <input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="Имя или компания"
+                autocomplete="name"
+                minlength="2"
+                maxlength="100"
+                required
+                aria-describedby="name-error"
+              />
+              <p class="form-error" id="name-error" data-error-for="name" role="alert"></p>
             </div>
             <div class="form-field">
-              <label for="contact-input">Куда ответить?</label>
-              <input id="contact-input" name="contact" type="text" placeholder="Телефон / Telegram / e-mail" required />
+              <label for="phone">Телефон</label>
+              <input
+                id="phone"
+                name="phone"
+                type="tel"
+                placeholder="+7 900 000-00-00"
+                autocomplete="tel"
+                inputmode="tel"
+                minlength="7"
+                maxlength="25"
+                pattern="(?=.*[0-9])[+()0-9\s-]{7,25}"
+                required
+                aria-describedby="phone-error"
+              />
+              <p class="form-error" id="phone-error" data-error-for="phone" role="alert"></p>
             </div>
             <div class="form-field">
-              <label for="task">Что нужно очистить?</label>
-              <textarea id="task" name="task" rows="3" placeholder="Например: ржавчина на металлоконструкции, площадь около 40 м²"></textarea>
+              <label for="message">Что нужно очистить?</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="3"
+                minlength="10"
+                maxlength="2000"
+                placeholder="Например: ржавчина на металлоконструкции, площадь около 40 м²"
+                required
+                aria-describedby="message-error"
+              ></textarea>
+              <p class="form-error" id="message-error" data-error-for="message" role="alert"></p>
+            </div>
+            <div class="form-field form-field--trap" aria-hidden="true">
+              <label for="website">Ваш сайт</label>
+              <input id="website" name="_gotcha" type="text" tabindex="-1" autocomplete="off" />
             </div>
             <button class="button button--primary button--full magnetic" type="submit" data-magnetic>
-              <span>Отправить задачу</span>
+              <span data-submit-label>Отправить задачу</span>
               <span class="button-icon" aria-hidden="true">↗</span>
             </button>
             <p class="form-status" data-form-status role="status" aria-live="polite"></p>
-            <p class="form-legal">Нажимая кнопку, вы соглашаетесь на обработку данных для связи по заявке.</p>
+            <p class="form-legal" id="form-note">Нажимая кнопку, вы соглашаетесь на обработку данных для связи по заявке.</p>
           </form>
         </div>
       </section>
@@ -533,6 +677,6 @@
       </div>
     </footer>
 
-    <script src="app.js"></script>
+    <script src="app.js" defer></script>
   </body>
 </html>

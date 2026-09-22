@@ -65,10 +65,7 @@
   </head>
 
   <body>
-    <div class="site-noise" aria-hidden="true"></div>
-    <div class="cursor-glow" aria-hidden="true"></div>
     <div class="scroll-progress" aria-hidden="true"></div>
-
     <header class="site-header" data-header>
       <div class="container header-inner">
         <a class="brand" href="#top" aria-label="LZR, на главную">
@@ -106,9 +103,7 @@
     </header>
 
     <main id="top">
-      <section class="hero section-grid" aria-labelledby="hero-title">
-        <div class="hero-glow hero-glow--left" aria-hidden="true"></div>
-        <div class="hero-glow hero-glow--right" aria-hidden="true"></div>
+      <section class="hero" aria-labelledby="hero-title">
         <div class="container hero-inner">
           <div class="hero-copy reveal reveal--up">
             <div class="eyebrow">
@@ -152,40 +147,16 @@
           </div>
 
           <div class="hero-visual reveal reveal--scale">
-            <div class="hero-visual-topline">
-              <span>FIELD UNIT / 03</span>
-              <span>01 — 04</span>
-            </div>
-            <div class="hero-stage" data-stage>
-              <div class="stage-orbit stage-orbit--one" aria-hidden="true"></div>
-              <div class="stage-orbit stage-orbit--two" aria-hidden="true"></div>
-              <div class="stage-grid" aria-hidden="true"></div>
-              <figure class="hero-media">
-                <img
-                  src="assets/hero-industrial.jpg"
-                  alt="Лазерный луч очищает металлическую поверхность"
-                  width="1280"
-                  height="853"
-                  fetchpriority="high"
-                  decoding="async"
-                />
-                <span class="media-vignette" aria-hidden="true"></span>
-                <span class="laser-scan" aria-hidden="true"></span>
-              </figure>
-              <div class="stage-marker stage-marker--top">
-                <span class="marker-line"></span>
-                <span>PRECISION<br />MODE</span>
-              </div>
-              <div class="stage-marker stage-marker--bottom">
-                <span class="pulse-dot"></span>
-                <span>LIVE SCAN</span>
-              </div>
-              <div class="stage-coordinate">55°45'N<br />37°37'E</div>
-            </div>
-            <div class="hero-visual-bottomline">
-              <span>Сфокусированный импульс</span>
-              <span class="visual-status"><span></span> доступно для выезда</span>
-            </div>
+            <figure class="hero-media">
+              <img
+                src="assets/hero-industrial.jpg"
+                alt="Лазерная очистка металлической поверхности"
+                width="1280"
+                height="853"
+                fetchpriority="high"
+                decoding="async"
+              />
+            </figure>
           </div>
         </div>
 
@@ -198,31 +169,16 @@
             <strong>02</strong>
             <span>Загрязнение снимается, геометрия остается</span>
           </div>
-          <div class="hero-stat hero-stat--accent">
+          <div class="hero-stat">
             <strong>03</strong>
             <span>Работаем там, где пескоструй слишком грубый</span>
-          </div>
-          <div class="scroll-note">
-            <span class="scroll-note-line"></span>
-            <span>Листайте ниже</span>
           </div>
         </div>
       </section>
 
-      <div class="marquee" aria-label="Виды загрязнений">
-        <div class="marquee-track">
-          <span>RUST / РЖАВЧИНА</span><i>✦</i><span>PAINT / КРАСКА</span><i>✦</i
-          ><span>SCALE / ОКАЛИНА</span><i>✦</i><span>OIL / МАСЛО</span><i>✦</i
-          ><span>CARBON / НАГАР</span><i>✦</i><span>WELD / СВАРКА</span><i>✦</i>
-          <span>RUST / РЖАВЧИНА</span><i>✦</i><span>PAINT / КРАСКА</span><i>✦</i
-          ><span>SCALE / ОКАЛИНА</span><i>✦</i><span>OIL / МАСЛО</span><i>✦</i
-          ><span>CARBON / НАГАР</span><i>✦</i><span>WELD / СВАРКА</span><i>✦</i>
-        </div>
-      </div>
-
       <section class="section section--why" id="why" aria-labelledby="why-title">
-        <div class="container">
-          <div class="section-heading section-heading--split reveal reveal--up">
+          <div class="container">
+            <div class="section-heading section-heading--split reveal reveal--up">
             <div>
               <p class="section-kicker"><span>01</span> / WHY LASER</p>
               <h2 id="why-title">Когда важен результат,<br />лазер <em>сильнее</em> пескоструя.</h2>
@@ -276,12 +232,7 @@
                   data-comparison-range
                 />
               </div>
-              <div class="comparison-foot">
-                <span>Песок оставляет после себя работу.</span>
-                <span>Лазер оставляет чистую основу.</span>
-              </div>
             </div>
-
             <div class="why-points reveal reveal--right">
               <article class="point-card point-card--active">
                 <span class="point-number">01</span>
@@ -320,71 +271,13 @@
         </div>
       </section>
 
-      <section class="section section--advantages" aria-labelledby="advantages-title">
-        <div class="container">
-          <div class="section-heading reveal reveal--up">
-            <p class="section-kicker"><span>02</span> / THE DIFFERENCE</p>
-            <h2 id="advantages-title">Очистка без компромиссов<br /><em>по поверхности.</em></h2>
-          </div>
-
-          <div class="advantage-grid">
-            <article class="advantage-card advantage-card--large reveal reveal--up">
-              <div class="advantage-visual advantage-visual--beam" aria-hidden="true">
-                <span class="beam-ring beam-ring--one"></span>
-                <span class="beam-ring beam-ring--two"></span>
-                <span class="beam-core"></span>
-                <span class="beam-caption">FOCUS / 0.1 MM</span>
-              </div>
-              <div class="advantage-content">
-                <span class="advantage-index">A / 01</span>
-                <h3>Точность вместо силы</h3>
-                <p>Лазер не «шлифует все подряд». Мы задаем режим под конкретную задачу и сохраняем рельеф, кромки и маркировку.</p>
-              </div>
-            </article>
-            <article class="advantage-card reveal reveal--up" data-delay="100">
-              <span class="advantage-index">B / 02</span>
-              <span class="advantage-symbol" aria-hidden="true">∿</span>
-              <h3>Без песка<br />и химии</h3>
-              <p>Меньше логистики, уборки и вторичного загрязнения на площадке.</p>
-              <span class="card-corner" aria-hidden="true">↗</span>
-            </article>
-            <article class="advantage-card advantage-card--orange reveal reveal--up" data-delay="150">
-              <span class="advantage-index">C / 03</span>
-              <span class="advantage-symbol" aria-hidden="true">◌</span>
-              <h3>Понятный<br />контроль</h3>
-              <p>Перед большим объемом делаем тестовый участок и согласуем результат.</p>
-              <span class="card-corner" aria-hidden="true">↗</span>
-            </article>
-            <article class="advantage-card advantage-card--wide reveal reveal--up" data-delay="200">
-              <div>
-                <span class="advantage-index">D / 04</span>
-                <h3>Мобильный формат<br /><em>для реальных объектов.</em></h3>
-              </div>
-              <div class="advantage-route" aria-hidden="true">
-                <span class="route-point route-point--start"></span>
-                <span class="route-line"></span>
-                <span class="route-point route-point--end"></span>
-                <span class="route-label route-label--start">BASE</span>
-                <span class="route-label route-label--end">SITE</span>
-              </div>
-              <p>Производство, спецтехника, металлоконструкции, транспорт или реставрация — везем технологию туда, где она нужна.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
       <section class="section section--services" id="services" aria-labelledby="services-title">
         <div class="container">
-          <div class="section-heading section-heading--split reveal reveal--up">
+            <div class="section-heading section-heading--split reveal reveal--up">
             <div>
-              <p class="section-kicker"><span>03</span> / WHAT WE CLEAN</p>
+              <p class="section-kicker"><span>02</span> / WHAT WE CLEAN</p>
               <h2 id="services-title">От детали<br />до <em>цеха.</em></h2>
             </div>
-            <p class="section-intro">
-              Не продаем один сценарий для всех. Сначала смотрим на материал,
-              слой загрязнения, доступ и требуемый результат — затем предлагаем
-              рабочий режим и формат расчета.
-            </p>
           </div>
 
           <div class="services-grid">
@@ -464,7 +357,7 @@
         <div class="container">
           <div class="process-top reveal reveal--up">
             <div>
-              <p class="section-kicker"><span>04</span> / PROCESS</p>
+              <p class="section-kicker"><span>03</span> / PROCESS</p>
               <h2 id="process-title">Без сюрпризов<br />на <em>объекте.</em></h2>
             </div>
             <div class="process-note">
@@ -502,24 +395,10 @@
         </div>
       </section>
 
-      <section class="section section--quote" aria-label="Ключевая мысль">
-        <div class="container quote-wrap reveal reveal--up">
-          <span class="quote-mark">“</span>
-          <blockquote>
-            Если пескоструй — это ковровая атака,<br />
-            то лазер — <em>хирургия по металлу.</em>
-          </blockquote>
-          <div class="quote-footer">
-            <span class="quote-line"></span>
-            <span>Выбирайте метод под результат, а не по привычке</span>
-          </div>
-        </div>
-      </section>
-
       <section class="section section--estimate" aria-labelledby="estimate-title">
         <div class="container estimate-layout">
           <div class="estimate-copy reveal reveal--left">
-            <p class="section-kicker"><span>05</span> / FAIR ESTIMATE</p>
+            <p class="section-kicker"><span>04</span> / FAIR ESTIMATE</p>
             <h2 id="estimate-title">Смета,<br /><em>а не гадание.</em></h2>
             <p>
               Стоимость считаем по объекту, смене или часу — в зависимости от
@@ -575,7 +454,7 @@
       <section class="section section--contact" id="contact" aria-labelledby="contact-title">
         <div class="container contact-card reveal reveal--scale">
           <div class="contact-copy">
-            <p class="section-kicker"><span>06</span> / START HERE</p>
+            <p class="section-kicker"><span>05</span> / START HERE</p>
             <h2 id="contact-title">Есть металл,<br />который пора<br /><em>очистить?</em></h2>
             <p>Отправьте фото и пару слов о задаче. Вернемся с вопросами, форматом работ и ориентиром по стоимости.</p>
             <div class="contact-meta">

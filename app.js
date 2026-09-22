@@ -1,29 +1,21 @@
 (() => {
   "use strict";
 
-  const root = document.documentElement;
   const body = document.body;
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const finePointer = window.matchMedia("(pointer: fine)").matches;
 
   body.classList.add("js-ready");
   body.classList.toggle("reduced-motion", reducedMotion);
-  body.classList.toggle("fine-pointer", finePointer);
 
   const mqReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const mqFinePointer = window.matchMedia("(pointer: fine)");
   mqReducedMotion.addEventListener("change", (e) => {
     body.classList.toggle("reduced-motion", e.matches);
-    location.reload();
-  });
-  mqFinePointer.addEventListener("change", (e) => {
-    body.classList.toggle("fine-pointer", e.matches);
-    location.reload();
+    window.location.reload();
   });
 
   const header = document.querySelector("[data-header]");
   const progress = document.querySelector(".scroll-progress");
-  const stage = document.querySelector("[data-stage]");
   const menuToggle = document.querySelector("[data-menu-toggle]");
   const nav = document.querySelector("[data-nav]");
 
@@ -102,33 +94,6 @@
   }
 
   if (finePointer && !reducedMotion) {
-    let latestPointerEvent = null;
-    let pointerFrame = 0;
-
-    const updatePointer = () => {
-      pointerFrame = 0;
-      if (!latestPointerEvent) return;
-
-      const { clientX, clientY } = latestPointerEvent;
-      root.style.setProperty("--pointer-x", `${clientX}px`);
-      root.style.setProperty("--pointer-y", `${clientY}px`);
-
-      if (!stage) return;
-      const x = (clientX / window.innerWidth - 0.5) * 3;
-      const y = (clientY / window.innerHeight - 0.5) * -3;
-      stage.style.setProperty("--stage-rotate-y", `${x}deg`);
-      stage.style.setProperty("--stage-rotate-x", `${y}deg`);
-    };
-
-    window.addEventListener(
-      "pointermove",
-      (event) => {
-        latestPointerEvent = event;
-        if (!pointerFrame) pointerFrame = window.requestAnimationFrame(updatePointer);
-      },
-      { passive: true },
-    );
-
     document.querySelectorAll("[data-magnetic]").forEach((element) => {
       let bounds = null;
 

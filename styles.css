@@ -20,6 +20,30 @@
   --stage-rotate-y: 0deg;
 }
 
+@font-face {
+  font-family: 'Manrope';
+  src: url('assets/fonts/manrope-variable.woff2') format('woff2');
+  font-weight: 400 800;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DM Mono';
+  src: url('assets/fonts/dm-mono-400.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DM Mono';
+  src: url('assets/fonts/dm-mono-500.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -133,6 +157,13 @@ button {
   transform: translate(-50%, -50%);
   transition: top 0.55s var(--ease-out), left 0.55s var(--ease-out);
   pointer-events: none;
+}
+
+.reduced-motion .cursor-glow,
+.reduced-motion .site-noise,
+:not(.fine-pointer) .cursor-glow,
+:not(.fine-pointer) .site-noise {
+  display: none;
 }
 
 .scroll-progress {
@@ -1872,6 +1903,46 @@ blockquote {
 
 .form-error:empty {
   display: none;
+}
+
+.form-hint {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.form-field input[type="file"] {
+  padding: 8px 0;
+  border-bottom: none;
+  color: var(--muted-light);
+  font-size: 12px;
+}
+
+.form-field input[type="file"]:focus {
+  border-bottom: none;
+  outline: none;
+}
+
+.form-field input[type="file"]::file-selector-button {
+  margin-right: 12px;
+  padding: 6px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+
+.form-field input[type="file"]::file-selector-button:hover {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--bg);
 }
 
 .form-field input.is-invalid,

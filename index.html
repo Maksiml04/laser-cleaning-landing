@@ -58,13 +58,9 @@
           "Снятие окалины"
         ]
       }
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap"
-      rel="stylesheet"
-    />
+</script>
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/manrope-variable.woff2" />
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/dm-mono-400.woff2" />
     <link rel="stylesheet" href="styles.css" />
   </head>
 
@@ -642,6 +638,18 @@
                 aria-describedby="message-error"
               ></textarea>
               <p class="form-error" id="message-error" data-error-for="message" role="alert"></p>
+            </div>
+            <div class="form-field">
+              <label for="photos">Фото объекта (необязательно)</label>
+              <input
+                id="photos"
+                name="photos"
+                type="file"
+                multiple
+                accept="image/*"
+                aria-describedby="photos-hint"
+              />
+              <p id="photos-hint" class="form-hint">Можно прикрепить несколько фото. Макс. 10 МБ на файл.</p>
             </div>
             <div class="form-field form-field--trap" aria-hidden="true">
               <label for="website">Ваш сайт</label>

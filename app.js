@@ -7,6 +7,19 @@
   const finePointer = window.matchMedia("(pointer: fine)").matches;
 
   body.classList.add("js-ready");
+  body.classList.toggle("reduced-motion", reducedMotion);
+  body.classList.toggle("fine-pointer", finePointer);
+
+  const mqReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const mqFinePointer = window.matchMedia("(pointer: fine)");
+  mqReducedMotion.addEventListener("change", (e) => {
+    body.classList.toggle("reduced-motion", e.matches);
+    location.reload();
+  });
+  mqFinePointer.addEventListener("change", (e) => {
+    body.classList.toggle("fine-pointer", e.matches);
+    location.reload();
+  });
 
   const header = document.querySelector("[data-header]");
   const progress = document.querySelector(".scroll-progress");
@@ -249,6 +262,7 @@
         Object.values(fields).forEach(clearFieldError);
         formStatus.className = "form-status form-status--success";
         formStatus.textContent = "Заявка получена. Мы свяжемся с вами по телефону.";
+        window.analytics?.track("form_submit_success", { endpoint });
       } catch (error) {
         formStatus.className = "form-status form-status--error";
         formStatus.textContent = "Не удалось отправить заявку. Попробуйте еще раз.";
@@ -264,4 +278,32 @@
   if (year) {
     year.textContent = new Date().getFullYear();
   }
+
+  // Analytics stub - replace with real implementation (GA4, Yandex Metrica, etc.)
+  window.analytics = {
+    track: (eventName, params = {}) => {
+      const payload = { event: eventName, timestamp: Date.now(), ...params };
+      console.log("[analytics]", payload);
+      // TODO: send to GA4, Yandex Metrica, etc.
+      // Example: gtag('event', eventName, params);
+      // Example: ym(XXXXXX, 'reachGoal', eventName, params);
+    },
+  };
+
+  // Auto-track CTA clicks
+  document.querySelectorAll("[data-magnetic]").forEach((el) => {
+    el.addEventListener("click", () => {
+      const text = el.textContent.trim().slice(0, 50);
+      window.analytics.track("cta_click", { label: text });
+    });
+  });
+
+  // Track Telegram clicks
+  document.querySelectorAll('a[href*="t.me"], a[href*="telegram"]').forEach((el) => {
+    el.addEventListener("click", () => {
+      window.analytics.track("telegram_click", { href: el.href });
+    });
+  });
+
+  // Track form submit success (already handled in form submit, but can extend here)
 })();

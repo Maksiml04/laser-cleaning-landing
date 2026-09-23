@@ -213,7 +213,7 @@
         return;
       }
 
-      if (photoField?.files?.some((file) => file.size > 10 * 1024 * 1024)) {
+      if (photoField?.files && Array.from(photoField.files).some((file) => file.size > 10 * 1024 * 1024)) {
         formStatus.className = "form-status form-status--error";
         formStatus.textContent = "Размер каждой фотографии не должен превышать 10 МБ.";
         return;

@@ -190,6 +190,9 @@
       event.preventDefault();
       if (isSubmitting) return;
 
+      formStatus.className = "form-status";
+      formStatus.textContent = "Проверяем данные...";
+
       const honeypot = leadForm.elements.namedItem("_gotcha");
       if (honeypot && honeypot.value.trim()) {
         leadForm.reset();
@@ -198,6 +201,8 @@
 
       const invalidFields = validateForm();
       if (invalidFields.length > 0) {
+        formStatus.className = "form-status form-status--error";
+        formStatus.textContent = "Проверьте выделенные поля.";
         invalidFields[0].focus();
         return;
       }

@@ -466,7 +466,7 @@
           <form
             class="lead-form"
             data-lead-form
-            action="https://formspree.io/f/YOUR_FORM_ID"
+            action="https://lzr-leads.lzr-leads.workers.dev"
             method="POST"
             aria-describedby="form-note"
           >
@@ -526,9 +526,10 @@
                 type="file"
                 multiple
                 accept="image/*"
+                data-max-files="3"
                 aria-describedby="photos-hint"
               />
-              <p id="photos-hint" class="form-hint">Можно прикрепить несколько фото. Макс. 10 МБ на файл.</p>
+              <p id="photos-hint" class="form-hint">До 3 фото. Макс. 10 МБ на файл.</p>
             </div>
             <div class="form-field form-field--trap" aria-hidden="true">
               <label for="website">Ваш сайт</label>

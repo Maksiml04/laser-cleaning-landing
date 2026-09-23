@@ -1,0 +1,12 @@
+name = "lzr-leads"
+main = "src/index.js"
+compatibility_date = "2026-09-22"
+workers_dev = true
+preview_urls = false
+
+[vars]
+ALLOWED_ORIGIN = "https://maksiml04.github.io"
+FORMSPREE_ENDPOINT = "https://formspree.io/f/xgavkjwd"
+TELEGRAM_USERNAME = "lialinm"
+MAX_FILES = "3"
+MAX_FILE_SIZE = "10485760"

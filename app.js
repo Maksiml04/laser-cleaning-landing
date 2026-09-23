@@ -131,6 +131,7 @@
       phone: leadForm.elements.namedItem("phone"),
       message: leadForm.elements.namedItem("message"),
     };
+    const photoField = leadForm.elements.namedItem("photos");
     const submitButton = leadForm.querySelector("[type='submit']");
     const submitLabel = leadForm.querySelector("[data-submit-label]");
     let isSubmitting = false;
@@ -201,12 +202,19 @@
         return;
       }
 
-      const endpoint = leadForm.getAttribute("action") || "";
-      if (endpoint.includes("YOUR_FORM_ID")) {
+      if (photoField?.files?.length > Number(photoField.dataset.maxFiles || 3)) {
         formStatus.className = "form-status form-status--error";
-        formStatus.textContent = "Форма почти готова: укажите Formspree ID в action формы.";
+        formStatus.textContent = "Можно прикрепить не более 3 фотографий.";
         return;
       }
+
+      if (photoField?.files?.some((file) => file.size > 10 * 1024 * 1024)) {
+        formStatus.className = "form-status form-status--error";
+        formStatus.textContent = "Размер каждой фотографии не должен превышать 10 МБ.";
+        return;
+      }
+
+      const endpoint = leadForm.getAttribute("action") || "";
 
       isSubmitting = true;
       submitButton.disabled = true;

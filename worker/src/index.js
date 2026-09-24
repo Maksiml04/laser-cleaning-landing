@@ -1,5 +1,8 @@
 const DEFAULT_MAX_FILES = 3;
 const DEFAULT_MAX_FILE_SIZE = 10 * 1024 * 1024;
+const DEFAULT_RATE_LIMIT = 5;
+const DEFAULT_RATE_WINDOW = 10 * 60;
+const DEFAULT_DEDUPE_WINDOW = 10 * 60;
 
 const corsHeaders = (origin) => ({
   "Access-Control-Allow-Headers": "Content-Type",
@@ -24,6 +27,67 @@ const isFile = (value) => value && typeof value === "object" && typeof value.arr
 const getPhotos = (formData) => formData
   .getAll("photos")
   .filter((value) => isFile(value) && value.size > 0);
+
+const clientIp = (request) => request.headers.get("CF-Connecting-IP") || "unknown";
+
+const verifyTurnstile = async (request, env, token) => {
+  const expectedHostnames = new Set(
+    String(env.TURNSTILE_HOSTNAMES || "")
+      .split(",")
+      .map((hostname) => hostname.trim())
+      .filter(Boolean),
+  );
+  if (!env.TURNSTILE_SECRET || !token || expectedHostnames.size === 0) return false;
+
+  const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      secret: env.TURNSTILE_SECRET,
+      response: token,
+      remoteip: clientIp(request),
+    }),
+  });
+  const result = await response.json().catch(() => ({}));
+
+  return response.ok
+    && result.success === true
+    && result.action === (env.TURNSTILE_ACTION || "contact")
+    && expectedHostnames.has(result.hostname);
+};
+
+const digest = async (value) => {
+  const bytes = new TextEncoder().encode(value);
+  const hash = await crypto.subtle.digest("SHA-256", bytes);
+  return [...new Uint8Array(hash)].map((byte) => byte.toString(16).padStart(2, "0")).join("");
+};
+
+const protectionKey = async (lead, photos) => digest([
+  lead.name.toLowerCase().replace(/\s+/g, " "),
+  lead.phone.replace(/\D/g, ""),
+  lead.message.toLowerCase().replace(/\s+/g, " "),
+  photos.map((photo) => `${photo.name}:${photo.size}`).join(","),
+].join("|"));
+
+const isRateLimited = async (env, ip) => {
+  if (!env.PROTECTION) throw new Error("Protection KV is not configured");
+  const limit = Number(env.RATE_LIMIT_MAX || DEFAULT_RATE_LIMIT);
+  const ttl = Number(env.RATE_LIMIT_TTL || DEFAULT_RATE_WINDOW);
+  const key = `rate:${ip}`;
+  const current = Number(await env.PROTECTION.get(key) || 0);
+  if (current >= limit) return true;
+  await env.PROTECTION.put(key, String(current + 1), { expirationTtl: ttl });
+  return false;
+};
+
+const isDuplicate = async (env, lead, photos) => {
+  if (!env.PROTECTION) throw new Error("Protection KV is not configured");
+  const ttl = Number(env.DEDUPE_TTL || DEFAULT_DEDUPE_WINDOW);
+  const key = `dedupe:${await protectionKey(lead, photos)}`;
+  if (await env.PROTECTION.get(key)) return true;
+  await env.PROTECTION.put(key, "1", { expirationTtl: ttl });
+  return false;
+};
 
 const validateLead = (lead, photos, maxFiles, maxFileSize) => {
   if (lead.name.length < 2 || lead.name.length > 100) return "Укажите имя или название компании.";
@@ -129,7 +193,9 @@ const forwardToFormspree = async (env, formData, photos) => {
 
   const outgoing = new FormData();
   for (const [name, value] of formData.entries()) {
-    if (name !== "photos" && typeof value === "string") outgoing.append(name, value);
+    if (name !== "photos" && name !== "cf-turnstile-response" && typeof value === "string") {
+      outgoing.append(name, value);
+    }
   }
   for (const photo of photos) {
     outgoing.append("photos", photo, photo.name || "photo");
@@ -178,6 +244,24 @@ export default {
     const validationError = validateLead(lead, photos, maxFiles, maxFileSize);
 
     if (validationError) return json({ ok: false, error: validationError }, 422, origin);
+
+    const turnstileToken = textField(formData, "cf-turnstile-response");
+    try {
+      if (!(await verifyTurnstile(request, env, turnstileToken))) {
+        return json({ ok: false, error: "Проверка безопасности не пройдена." }, 403, origin);
+      }
+
+      if (await isRateLimited(env, clientIp(request))) {
+        return json({ ok: false, error: "Слишком много заявок. Попробуйте позже." }, 429, origin);
+      }
+
+      if (await isDuplicate(env, lead, photos)) {
+        return json({ ok: true, duplicate: true, emailForwarded: true, attachmentsSent: true }, 200, origin);
+      }
+    } catch (error) {
+      console.error("Protection check failed", error);
+      return json({ ok: false, error: "Проверка заявки временно недоступна." }, 503, origin);
+    }
 
     const [telegramResult, formspreeResult] = await Promise.allSettled([
       sendTelegramLead(env, lead, photos),

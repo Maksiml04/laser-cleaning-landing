@@ -18,6 +18,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="preload" as="font" type="font/woff2" crossorigin href="../assets/fonts/manrope-variable.woff2" />
     <link rel="preload" as="font" type="font/woff2" crossorigin href="../assets/fonts/dm-mono-400.woff2" />
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
     <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
@@ -113,6 +114,13 @@
               <label for="website">Ваш сайт</label>
               <input id="website" name="_gotcha" type="text" tabindex="-1" autocomplete="off" />
             </div>
+            <div
+              class="cf-turnstile"
+              data-turnstile
+              data-sitekey="0x4AAAAAAFBFZSSml0tH2JsS"
+              data-action="contact"
+              data-theme="dark"
+            ></div>
             <button class="button button--primary button--full" type="submit">
               <span data-submit-label>Отправить задачу</span><span class="button-icon" aria-hidden="true">↗</span>
             </button>

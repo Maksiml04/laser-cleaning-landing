@@ -8,5 +8,25 @@ preview_urls = false
 ALLOWED_ORIGIN = "https://maksiml04.github.io"
 FORMSPREE_ENDPOINT = "https://formspree.io/f/xgavkjwd"
 TELEGRAM_USERNAME = "lialinm"
+TURNSTILE_HOSTNAMES = "maksiml04.github.io,localhost,127.0.0.1"
+TURNSTILE_ACTION = "contact"
 MAX_FILES = "3"
 MAX_FILE_SIZE = "10485760"
+RATE_LIMIT_MAX = "5"
+RATE_LIMIT_TTL = "600"
+DEDUPE_TTL = "600"
+
+[[kv_namespaces]]
+binding = "PROTECTION"
+id = "8361c75385ff4563ada449d0a793305e"
+
+[observability]
+enabled = true
+
+[observability.logs]
+enabled = true
+head_sampling_rate = 1
+
+[observability.traces]
+enabled = true
+head_sampling_rate = 0.01

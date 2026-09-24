@@ -134,7 +134,38 @@
     const photoField = leadForm.elements.namedItem("photos");
     const submitButton = leadForm.querySelector("[type='submit']");
     const submitLabel = leadForm.querySelector("[data-submit-label]");
+    const turnstileElement = leadForm.querySelector("[data-turnstile]");
+    let turnstileWidgetId;
+    let turnstileToken = "";
     let isSubmitting = false;
+
+    const initializeTurnstile = () => {
+      if (!turnstileElement || !window.turnstile || turnstileWidgetId !== undefined) return;
+
+      const render = () => {
+        if (turnstileWidgetId !== undefined) return;
+        turnstileWidgetId = window.turnstile.render(turnstileElement, {
+          sitekey: turnstileElement.dataset.sitekey,
+          action: turnstileElement.dataset.action || "contact",
+          theme: turnstileElement.dataset.theme || "dark",
+          callback: (token) => {
+            turnstileToken = token;
+          },
+          "expired-callback": () => {
+            turnstileToken = "";
+          },
+          "error-callback": () => {
+            turnstileToken = "";
+          },
+        });
+      };
+
+      if (typeof window.turnstile.ready === "function") window.turnstile.ready(render);
+      else render();
+    };
+
+    initializeTurnstile();
+    window.addEventListener("load", initializeTurnstile, { once: true });
 
     const setFieldError = (field, message) => {
       const errorElement = leadForm.querySelector(`[data-error-for="${field.name}"]`);
@@ -219,6 +250,12 @@
         return;
       }
 
+      if (!turnstileToken) {
+        formStatus.className = "form-status form-status--error";
+        formStatus.textContent = "Пройдите проверку безопасности.";
+        return;
+      }
+
       const endpoint = leadForm.getAttribute("action") || "";
 
       isSubmitting = true;
@@ -228,23 +265,34 @@
       formStatus.className = "form-status";
 
       try {
+        const submission = new FormData(leadForm);
+        submission.set("cf-turnstile-response", turnstileToken);
         const response = await fetch(endpoint, {
           method: "POST",
-          body: new FormData(leadForm),
+          body: submission,
           headers: { Accept: "application/json" },
         });
+        const result = await response.json().catch(() => ({}));
 
-        if (!response.ok) throw new Error("Formspree request failed");
+        if (!response.ok) throw new Error(result.error || "Не удалось отправить заявку.");
 
         leadForm.reset();
         Object.values(fields).forEach(clearFieldError);
         formStatus.className = "form-status form-status--success";
-        formStatus.textContent = "Заявка получена. Мы свяжемся с вами по телефону.";
+        formStatus.textContent = result.duplicate
+          ? "Такая заявка уже была получена. Мы свяжемся с вами по телефону."
+          : "Заявка получена. Мы свяжемся с вами по телефону.";
         window.analytics?.track("form_submit_success", { endpoint });
       } catch (error) {
         formStatus.className = "form-status form-status--error";
-        formStatus.textContent = "Не удалось отправить заявку. Попробуйте еще раз.";
+        formStatus.textContent = error instanceof Error && error.message
+          ? error.message
+          : "Не удалось отправить заявку. Попробуйте еще раз.";
       } finally {
+        if (turnstileWidgetId !== undefined && window.turnstile) {
+          window.turnstile.reset(turnstileWidgetId);
+          turnstileToken = "";
+        }
         isSubmitting = false;
         submitButton.disabled = false;
         submitLabel.textContent = "Отправить задачу";

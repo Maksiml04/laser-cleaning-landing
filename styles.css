@@ -1370,6 +1370,11 @@ h2 {
   white-space: nowrap;
 }
 
+.cf-turnstile {
+  min-height: 65px;
+  margin-top: 4px;
+}
+
 .form-legal {
   max-width: 380px;
   margin-top: 7px;

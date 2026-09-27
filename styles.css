@@ -400,6 +400,13 @@ blockquote em {
   line-height: 1.7;
 }
 
+.hero-lead-detail {
+  display: block;
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
 .hero-actions {
   display: flex;
   align-items: center;

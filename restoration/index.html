@@ -20,7 +20,7 @@
     <link rel="preload" as="font" type="font/woff2" crossorigin href="../assets/fonts/dm-mono-400.woff2" />
     <link rel="stylesheet" href="../styles.css" />
   </head>
-  <body>
+  <body class="restoration-page">
     <header class="site-header" data-header><div class="container header-inner">
       <a class="brand" href="../" aria-label="LZR, на главную"><span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span><span class="brand-name">LZR<span>/</span></span><span class="brand-caption">laser cleaning</span></a>
       <nav class="site-nav" id="site-navigation" data-nav aria-label="Основная навигация"><a href="../uslugi/">Услуги</a><a href="../restoration/" aria-current="page">Реставрация</a><a href="../industrial/">Промышленная очистка</a><a href="../prices/">Цены</a><a href="../contacts/">Контакты</a></nav>
@@ -34,7 +34,7 @@
          <figure class="subpage-visual reveal reveal--scale"><img src="../assets/hero-restoration.jpg" alt="Импульсная лазерная очистка декоративной металлической детали" width="1280" height="853" fetchpriority="high" decoding="async" /></figure>
       </div></section>
 
-      <section class="subpage-section" id="method" aria-labelledby="method-title"><div class="container"><div class="subpage-heading"><p class="section-kicker"><span>01</span> / WHY IMPULSE</p><h2 id="method-title">Очистить предмет.<br /><em>Не стереть его характер.</em></h2><p>Реставрационная задача начинается не с мощности, а с понимания материала и того, что должно остаться после очистки. Финальный режим согласуется после теста.</p></div><div class="subpage-grid"><article class="info-card"><span class="info-card-index">01 / CONTROL</span><h3>Тонкая настройка</h3><p>Короткие импульсы и управляемый проход позволяют работать с локальным слоем загрязнения.</p></article><article class="info-card"><span class="info-card-index">02 / TEST</span><h3>Проверка на месте</h3><p>До основного объема показываем тестовый участок и фиксируем ожидаемый результат.</p></article><article class="info-card"><span class="info-card-index">03 / DETAIL</span><h3>Видим детали</h3><p>Оцениваем рельеф, кромки, швы и маркировку, а не только изменение цвета поверхности.</p></article></div></div></section>
+       <section class="subpage-section" id="method" aria-labelledby="method-title"><div class="container"><div class="subpage-heading"><p class="section-kicker"><span>01</span> / WHY IMPULSE</p><h2 id="method-title">Почему импульсный<br /><em>лазер для реставрации.</em></h2><p>Импульсный режим позволяет работать короткими проходами и контролировать воздействие там, где важны рельеф, кромки, маркировка и история поверхности.</p></div><div class="subpage-grid"><article class="info-card"><span class="info-card-index">01 / CONTROL</span><h3>Локальное воздействие</h3><p>Короткие импульсы помогают снимать загрязнение небольшими участками и не затрагивать лишнюю поверхность.</p></article><article class="info-card"><span class="info-card-index">02 / TEST</span><h3>Понятный тест</h3><p>Режим можно проверить на маленьком или скрытом участке до основной работы и согласовать результат.</p></article><article class="info-card"><span class="info-card-index">03 / DETAIL</span><h3>Сохраняем детали</h3><p>Рельеф, кромки, орнамент и маркировка остаются видимыми для дальнейшей реставрации.</p></article></div></div></section>
 
        <section class="subpage-section subpage-section--soft restoration-work-section" aria-labelledby="restoration-work-title">
          <div class="container">
@@ -55,18 +55,62 @@
                  </div>
                </div>
              </article>
-             <article class="restoration-work-card restoration-work-card--second" tabindex="0">
-               <img src="../assets/hero-restoration.jpg" alt="Тестовая лазерная очистка металлического элемента" width="1280" height="853" loading="lazy" decoding="async" />
-               <div class="restoration-work-overlay">
+              <article class="restoration-work-card restoration-work-card--second" tabindex="0">
+                <img src="../assets/hero-restoration.jpg" alt="Тестовая лазерная очистка металлического элемента" width="1280" height="853" loading="lazy" decoding="async" />
+                <div class="restoration-work-overlay">
                  <span class="restoration-work-index">02 / TEST PATCH</span>
                  <h3>Металлический элемент перед реставрацией</h3>
                  <div class="restoration-work-description">
                    <p><strong>Было:</strong> старый слой и загрязнение после хранения.</p>
                    <p><strong>Сделали:</strong> проверили режим на небольшом участке и подготовили поверхность к следующему этапу.</p>
-                 </div>
-               </div>
-             </article>
-           </div>
+                  </div>
+                </div>
+              </article>
+              <article class="restoration-work-card restoration-work-card--third" tabindex="0">
+                <img src="../assets/hero-restoration.jpg" alt="Лазерная очистка металлического орнамента" width="1280" height="853" loading="lazy" decoding="async" />
+                <div class="restoration-work-overlay">
+                  <span class="restoration-work-index">03 / RELIEF</span>
+                  <h3>Орнамент и сложный рельеф</h3>
+                  <div class="restoration-work-description">
+                    <p><strong>Было:</strong> старое загрязнение в углублениях и на кромках.</p>
+                    <p><strong>Сделали:</strong> работали короткими импульсами по отдельным зонам, не сглаживая рисунок.</p>
+                  </div>
+                </div>
+              </article>
+              <article class="restoration-work-card restoration-work-card--fourth" tabindex="0">
+                <img src="../assets/hero-restoration.jpg" alt="Очистка металлической детали со старым покрытием" width="1280" height="853" loading="lazy" decoding="async" />
+                <div class="restoration-work-overlay">
+                  <span class="restoration-work-index">04 / COATING</span>
+                  <h3>Деталь со старым покрытием</h3>
+                  <div class="restoration-work-description">
+                    <p><strong>Было:</strong> остатки покрытия на поверхности со сложной геометрией.</p>
+                    <p><strong>Сделали:</strong> сняли слой по участкам и оставили основу открытой для осмотра.</p>
+                  </div>
+                </div>
+              </article>
+              <article class="restoration-work-card restoration-work-card--fifth" tabindex="0">
+                <img src="../assets/hero-restoration.jpg" alt="Очистка металлического декоративного элемента" width="1280" height="853" loading="lazy" decoding="async" />
+                <div class="restoration-work-overlay">
+                  <span class="restoration-work-index">05 / PATINA</span>
+                  <h3>Металлический декор</h3>
+                  <div class="restoration-work-description">
+                    <p><strong>Было:</strong> коррозия и следы хранения на декоративной поверхности.</p>
+                    <p><strong>Сделали:</strong> сначала проверили режим, затем очистили доступные зоны без грубой механики.</p>
+                  </div>
+                </div>
+              </article>
+              <article class="restoration-work-card restoration-work-card--sixth" tabindex="0">
+                <img src="../assets/hero-restoration.jpg" alt="Тестовый участок на металлическом реставрационном объекте" width="1280" height="853" loading="lazy" decoding="async" />
+                <div class="restoration-work-overlay">
+                  <span class="restoration-work-index">06 / SAMPLE</span>
+                  <h3>Тестовый участок</h3>
+                  <div class="restoration-work-description">
+                    <p><strong>Было:</strong> неизвестная реакция основы на очистку.</p>
+                    <p><strong>Сделали:</strong> проверили небольшой фрагмент и зафиксировали режим до основной работы.</p>
+                  </div>
+                </div>
+              </article>
+            </div>
          </div>
        </section>
 

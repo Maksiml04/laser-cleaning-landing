@@ -1666,6 +1666,26 @@ h2 {
   line-height: 0.92;
 }
 
+.restoration-page .subpage-hero-inner > div {
+  min-width: 0;
+}
+
+.restoration-page .subpage-hero h1 {
+  max-width: 620px;
+  font-size: clamp(2.75rem, 5vw, 5.6rem);
+  overflow-wrap: break-word;
+}
+
+.restoration-page .subpage-lead {
+  max-width: 560px;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.restoration-page .subpage-actions {
+  margin-top: 28px;
+}
+
 .subpage-lead {
   max-width: 650px;
   margin-top: 29px;
@@ -1804,6 +1824,22 @@ h2 {
 
 .restoration-work-card--second img {
   object-position: 64% center;
+}
+
+.restoration-work-card--third img {
+  object-position: 34% center;
+}
+
+.restoration-work-card--fourth img {
+  object-position: 72% center;
+}
+
+.restoration-work-card--fifth img {
+  object-position: 48% 58%;
+}
+
+.restoration-work-card--sixth img {
+  object-position: 82% 44%;
 }
 
 .restoration-work-overlay {

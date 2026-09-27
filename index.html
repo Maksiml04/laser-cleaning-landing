@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" class="home-page">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -65,7 +65,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
 
-  <body>
+  <body class="home-page">
     <div class="scroll-progress" aria-hidden="true"></div>
     <header class="site-header" data-header>
       <div class="container header-inner">
@@ -85,8 +85,8 @@
           <a href="contacts/">Контакты</a>
         </nav>
 
-        <a class="header-cta magnetic" href="#contact" data-magnetic>
-          <span>Рассчитать работу</span>
+        <a class="header-cta magnetic" href="prices/" data-magnetic>
+          <span>Рассчитать стоимость</span>
           <span class="arrow arrow--small" aria-hidden="true">↗</span>
         </a>
 
@@ -114,42 +114,34 @@
             </div>
 
             <h1 id="hero-title">
-              Сначала смотрим<br />
-              на металл.<br />
-              <em>Потом чистим.</em>
+              Лазерная чистка<br />
+              металла.<br />
+              <em>Работаем с поверхностью любой сложности.</em>
             </h1>
 
             <p class="hero-lead">
-              Ржавчину, краску, окалину и нагар снимаем на месте. Сначала просим фото
-              и пару деталей о задаче, а перед большим объемом проверяем режим на
-              небольшом участке.
-              <span class="hero-lead-detail">
-                Оператор ведет луч вручную и меняет режим по поверхности: где слой
-                плотнее, проход медленнее. За минуту видно, как черная окалина уходит
-                слоями, а металл под ней остается серым и целым.
-              </span>
+              Тестовая чистка с выездом на объект — бесплатно.
             </p>
 
             <div class="hero-actions">
-              <a class="button button--primary magnetic" href="#contact" data-magnetic>
-                <span>Отправить фото</span>
+              <a class="button button--primary magnetic" href="contacts/#contact-form" data-magnetic>
+                <span>Бесплатный выезд + тестовая чистка</span>
                 <span class="button-icon" aria-hidden="true">↗</span>
               </a>
-              <a class="text-link" href="#process">
-                <span class="text-link-line"></span>
-                <span>Как проходит работа</span>
+              <details class="hero-work-menu">
+                <summary class="button button--outline">
+                  <span>Наши работы</span>
+                  <span class="button-icon" aria-hidden="true">↗</span>
+                </summary>
+                <div class="hero-work-options">
+                  <a href="restoration/">Реставрация</a>
+                  <a href="industrial/">Промышленная очистка</a>
+                </div>
+              </details>
+              <a class="button button--outline magnetic" href="prices/" data-magnetic>
+                <span>Рассчитать стоимость</span>
+                <span class="button-icon" aria-hidden="true">↗</span>
               </a>
-            </div>
-
-            <div class="hero-proof">
-              <div class="proof-item">
-                <span class="proof-icon" aria-hidden="true">✦</span>
-                <span>Смотрим фото,<br />размер и адрес</span>
-              </div>
-              <div class="proof-item">
-                <span class="proof-icon" aria-hidden="true">⌁</span>
-                <span>Тестируем участок<br />до основного объема</span>
-              </div>
             </div>
           </div>
 

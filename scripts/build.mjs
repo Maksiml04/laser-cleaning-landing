@@ -9,8 +9,9 @@ import sharp from "sharp";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dist = path.join(root, "dist");
 const pageDirectories = ["uslugi", "restoration", "industrial", "prices", "contacts"];
-const rootFiles = ["index.html", "404.html", "styles.css", "app.js", "robots.txt", "sitemap.xml"];
+const rootFiles = ["index.html", "404.html", "styles.css", "app.js", "robots.txt", "sitemap.xml", "favicon.svg"];
 const assetFiles = [
+  "assets/hero photo.jpg",
   "assets/hero-industrial.jpg",
   "assets/hero-restoration.jpg",
   "assets/rust-before-after.jpg",

@@ -140,7 +140,12 @@
     let isSubmitting = false;
 
     const initializeTurnstile = () => {
-      if (!turnstileElement || !window.turnstile || turnstileWidgetId !== undefined) return;
+      if (
+        !turnstileElement
+        || !window.turnstile
+        || typeof window.turnstile.render !== "function"
+        || turnstileWidgetId !== undefined
+      ) return;
 
       const render = () => {
         if (turnstileWidgetId !== undefined) return;
@@ -160,11 +165,9 @@
         });
       };
 
-      if (typeof window.turnstile.ready === "function") window.turnstile.ready(render);
-      else render();
+      render();
     };
 
-    initializeTurnstile();
     window.addEventListener("load", initializeTurnstile, { once: true });
 
     const setFieldError = (field, message) => {

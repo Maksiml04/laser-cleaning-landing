@@ -1779,6 +1779,115 @@ h2 {
   line-height: 1.65;
 }
 
+.restoration-work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.restoration-work-card {
+  position: relative;
+  aspect-ratio: 1.2;
+  min-height: 390px;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  background: var(--panel);
+  outline: none;
+}
+
+.restoration-work-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-out), filter 0.45s ease;
+}
+
+.restoration-work-card--second img {
+  object-position: 64% center;
+}
+
+.restoration-work-overlay {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(22px, 3vw, 38px);
+  background: linear-gradient(180deg, rgba(10, 13, 18, 0) 26%, rgba(10, 13, 18, 0.86) 100%);
+  transition: background 0.45s ease;
+}
+
+.restoration-work-index {
+  color: var(--accent-bright);
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+.restoration-work-overlay h3 {
+  max-width: 470px;
+  margin-top: 13px;
+  font-size: clamp(1.6rem, 2.7vw, 2.35rem);
+  line-height: 1.02;
+}
+
+.restoration-work-description {
+  max-width: 500px;
+  margin-top: 18px;
+  color: var(--muted-light);
+  font-size: 13px;
+  line-height: 1.55;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.35s ease, transform 0.35s var(--ease-out);
+}
+
+.restoration-work-description p + p {
+  margin-top: 8px;
+}
+
+.restoration-work-description strong {
+  color: var(--text);
+}
+
+.restoration-work-card:hover img,
+.restoration-work-card:focus img {
+  filter: saturate(0.78) brightness(0.58);
+  transform: scale(1.04);
+}
+
+.restoration-work-card:hover .restoration-work-overlay,
+.restoration-work-card:focus .restoration-work-overlay {
+  background: rgba(10, 13, 18, 0.74);
+}
+
+.restoration-work-card:hover .restoration-work-description,
+.restoration-work-card:focus .restoration-work-description {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.restoration-work-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+}
+
+@media (hover: none) {
+  .restoration-work-card img {
+    filter: saturate(0.78) brightness(0.58);
+  }
+
+  .restoration-work-card .restoration-work-overlay {
+    background: rgba(10, 13, 18, 0.74);
+  }
+
+  .restoration-work-card .restoration-work-description {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .subpage-list {
   display: grid;
   gap: 0;
@@ -2148,6 +2257,14 @@ h2 {
     min-height: 300px;
   }
 
+  .restoration-work-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .restoration-work-card {
+    min-height: 360px;
+  }
+
   .subpage-cta-inner {
     align-items: flex-start;
     flex-direction: column;
@@ -2425,6 +2542,10 @@ h2 {
 
   .info-card-index {
     margin-bottom: 28px;
+  }
+
+  .restoration-work-card {
+    min-height: 300px;
   }
 
   .subpage-list li {
